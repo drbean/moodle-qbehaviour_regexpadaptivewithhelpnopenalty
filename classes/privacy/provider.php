@@ -15,20 +15,32 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information for the calculated question type.
+ * Privacy Subsystem implementation for qbehaviour_regexpadaptivewithhelpnopenalty
  *
  * @package    qbehaviour_regexpadaptivewithhelpnopenalty
- * @copyright  2011-2012 Joseph R�zeau
+ * @copyright  2018 Nicolas Dunand <nicolas.dunand@unil.ch>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace qbehaviour_regexpadaptivewithhelpnopenalty\privacy;
+
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'qbehaviour_regexpadaptivewithhelpnopenalty';
-$plugin->version  = 2019112100;
-$plugin->requires = 2016052300; // Moodle version.
-$plugin->dependencies = array(
-    'qbehaviour_regexpadaptivewithhelp' => 2019112100
-);
-$plugin->release = '3.8.0 for Moodle 3.1-3.8';
-$plugin->maturity  = MATURITY_STABLE;
+/**
+ * Privacy Subsystem for qbehaviour_regexpadaptivewithhelpnopenalty implementing null_provider.
+ *
+ * @copyright  2018 Nicolas Dunand <nicolas.dunand@unil.ch>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class provider implements \core_privacy\local\metadata\null_provider {
+
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function get_reason() : string {
+        return 'privacy:metadata';
+    }
+}
